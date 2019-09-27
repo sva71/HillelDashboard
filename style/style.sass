@@ -1,0 +1,292 @@
+@import "variables"
+
+=polygon($__color)      // вместо картинки с треугольником предлагаю применить спецсимвол &#9660, т.к.
+  content: '\25BC'      // его хотя бы покрасить можно, и это дает возможность применить mixin
+  width: 7px
+  height: 8px
+  font-size: 8px
+  color: $__color
+
+.val_up
+  color: $__ok-cl
+  &::before
+    margin-right: 4px
+    +polygon($__ok-cl)
+    content: '\25B2'
+
+.val_down
+  color: $__error-cl
+  &::before
+    margin-right: 4px
+    +polygon($__error-cl)
+
+body
+  background-color: $__dashboard-bg
+  font-family: Poppins, sans-serif
+
+a
+  text-decoration: none
+
+.error
+  color: $__error-cl
+
+.warning
+  color: $__warning-cl
+
+.notice
+  color: $__info-cl
+
+.rank-1, .rank-2, .rank-3, .rank-4
+  color: $__rank-cl
+  width: 50%
+  &::before
+    content: ''
+    position: absolute
+    left: -14px
+    top: 8px
+    width: 6px
+    height: 6px
+    box-sizing: border-box
+    border-radius: 5px
+
+@each $i, $col in $__circle-cl              // цикл назначения цветов колечкам ::before
+  .rank-#{$i}::before
+    border: 2px solid $col
+
+.dashboard
+  max-width: $__dashboard-w
+  margin: auto
+  padding-top: 49px
+
+.header
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+
+.title
+  color: $__dashboard-cl
+  font-weight: 500
+  font-size: 24px
+  line-height: 36px
+
+.filters
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+
+.filter
+  font-size: 12px
+  line-height: 18px
+  color: $__filter-cl
+  &::after
+    +polygon($__polygon-cl)
+    margin-left: 9px
+
+.dropdown
+  width: 7px
+  height: 4px
+
+.plusbutton
+  width: 35px
+  height: 35px
+  margin-left: 39px
+  text-align: center
+  vertical-align: center
+  background-color: $__plusbutton-bg
+  box-shadow: 0px 4px 10px rgba(0, 75, 255, 0.24)
+  border-radius: 4px
+
+.plus
+  color: white
+  font-size: 24px
+  padding: 1px 10px     // чтобы ссылка была размером с кнопку
+
+.rectangle
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  max-width: $__dashboard-w
+  padding: 25px 21px 25px 32px
+  margin-top: 22px
+  background-color: $__rectangle-bg
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.04)
+  border-radius: 5px
+
+.navigation__menu
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  position: relative
+  width: 100%
+
+.domain
+  display: flex
+  justify-content: space-between
+
+.letter_k
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 25px
+  font-size: 13px
+  line-height: 19px
+  font-weight: 900
+  text-align: center
+  vertical-align: center
+  border-radius: 50%
+  color: #FFFFFF
+  background-color: #000000
+
+.kparser
+  font-weight: 500
+  font-size: 15px
+  line-height: 23px
+  margin-left: 9px
+  color: #000000
+
+.icons
+  display: flex
+  justify-content: space-between
+
+.share, .settings, .delete
+  width: 23px
+  height: 23px
+  margin-left: 6px
+  margin-right: 6px
+
+.line
+  display: block
+  width: 100%
+  height: 1px
+  margin-top: 20px
+  background-color: $__line-cl
+
+.dashboard__body
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  width: 100%
+  margin-top: 20px
+  .dashboard__body-block
+    &:not(:first-child)
+      padding-left: 35px
+
+.dashboard__body-block
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  position: relative
+  padding-right: 30px
+  box-sizing: border-box
+  .block__header
+    width: 100%
+    font-size: 11px
+    line-height: 16px
+    font-weight: 500
+    color: $__block-header-cl
+    &::after
+      content: ''
+      position: absolute
+      left: 100%
+      width: 1px
+      height: 100%
+      background-color: $__line-cl
+
+.bl1
+  width: 20%
+  align-items: baseline
+
+.bl2
+  width: 30%
+
+.bl3
+  width: 25%
+  ul
+    padding: 0
+    list-style: none
+    li
+      position: relative
+      font-size: 12px
+      line-height: 22px
+      span
+        color: $__info-cl
+        font-weight: 500
+      &::before
+        content: ''
+        position: absolute
+        left: -14px
+        top: 8px
+        width: 5px
+        height: 5px
+        box-sizing: border-box
+        border-radius: 50%
+        background-color: #F18F1C
+      &:last-child
+        &::before
+          background-color: $__ok-cl
+
+.bl4
+  width: 25%
+
+.ws__80
+  width: 60%
+  >span
+    font-size: 56px
+    font-weight: 500
+    line-height: 84px
+    color: $__big-digits-cl
+    >span
+      font-size: 28px                             // "%" примерно в 2 раза меньше, чем "80"
+.ws__4
+  width: 25%
+  font-size: 15px
+  font-weight: 500
+  color: $__error-cl
+  &::before
+    margin-right: 6px
+    +polygon($__error-cl)
+
+.score__table
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  align-items: center
+  width: 100%
+
+.score__table-title
+  width: 50%
+  height: 23px
+  font-weight: normal
+  font-size: 12px
+  line-height: 22px
+  position: relative
+
+.score__table-value1
+  width: 25%
+  height: 23px
+  font-weight: 500
+  font-size: 12px
+  color: $__info-cl
+
+.score__table-value2
+  width: 25%
+  height: 23px
+  font-weight: normal
+  font-size: 12px
+
+.graph__29
+  width: 253px
+  height: 47px
+  background-image: url("../images/graph_29.png")
+
+.graph__28
+  width: 253px
+  height: 70px
+  background-image: url("../images/graph_28.png")
+
+.subheader
+  font-size: 10px
+  color: $__subheader-cl
